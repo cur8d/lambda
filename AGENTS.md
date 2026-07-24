@@ -56,12 +56,12 @@ infra/                 # AWS CDK infrastructure stacks
 compose.yml            # LocalStack container configuration
 ```
 
-## Renaming the Template
+## Initializing the Template
 
-To rename the project from the default `templates` name, run:
+To initialize the project from the default `templates` name, run:
 
 ```bash
-mise run rename --name="my-project" --description="My description" --author="Name" --email="handle" --github="username"
+mise run init --name="my-project" --description="My description" --author="Name" --email="handle" --github="username"
 ```
 
 ## Dependencies

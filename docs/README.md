@@ -63,11 +63,11 @@ Click the button below (or [use this link](https://github.com/amrabed/aws-lambda
 
 [![Use this template](https://img.shields.io/badge/Use%20this%20template-238636?style=for-the-badge)](https://github.com/amrabed/aws-lambda-templates/generate)
 
-### Rename the project
-Run `mise run rename` once after cloning, before any other setup steps:
+### Initialize the project
+Run `mise run init` once after cloning, before any other setup steps:
 
 ```bash
-mise run rename --name="my-project" --description="My project description" --author="Jane Doe" --email="jane" --github="janedoe"
+mise run init --name="my-project" --description="My project description" --author="Jane Doe" --email="jane" --github="janedoe"
 ```
 
 Pass the following parameters:

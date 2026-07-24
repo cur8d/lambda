@@ -66,7 +66,7 @@ def main(name: str, description: str, author: str, email: str, github: str):
         for file in files:
             if file.endswith((".py", ".md", ".yml", ".pyt", ".toml")):
                 path = Path(root) / file
-                if path.name == "rename.py":
+                if path.name == "init.py":
                     continue
 
                 content = path.read_text()

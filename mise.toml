@@ -45,8 +45,8 @@ arg "<template>" help="Template name"
 run = "uv run new -n $usage_template"
 alias = "n"
 
-[tasks.rename]
-description = "Rename project (run once)"
+[tasks.init]
+description = "Initialize project (run once)"
 usage = """
 flag "--name <name>" help="Project new name"
 flag "--description <description>" help="Project short description"
@@ -54,7 +54,7 @@ flag "--author <author>" help="Author name"
 flag "--email <email>" help="Author email"
 flag "--github <github>" help="GitHub username"
 """
-run = "uv run rename"
+run = "uv run init"
 
 ##### Dev setup and maintenance #####
 
