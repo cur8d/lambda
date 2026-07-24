@@ -1,5 +1,3 @@
-from unittest.mock import MagicMock
-
 from pytest import main
 from pytest_mock import MockerFixture
 
@@ -10,7 +8,7 @@ def test_api_session_get_uses_timeout(mocker: MockerFixture) -> None:
     session_mock = mocker.patch("templates.eventbridge.session.Session")
     session_instance = session_mock.return_value
 
-    mock_response = MagicMock()
+    mock_response = mocker.MagicMock()
     session_instance.get.return_value = mock_response
 
     api_session = ApiSession(timeout=15)
