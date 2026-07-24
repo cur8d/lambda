@@ -1,4 +1,5 @@
 # REST API
+
 A Lambda function that handles GET/POST requests from a REST API and loads/stores records into a DynamoDB table.
 
 ## Architecture
@@ -27,23 +28,23 @@ mise run deploy api
 
 ### Endpoints
 
-Endpoint | Description | Response codes
---- | --- | ---
-`GET /items/{id}` | Retrieve an item by ID | 200 (OK), 400 (Bad Request), 404 (Not Found), 500 (Internal Server Error)
-`POST /items` | Create a new item | 201 (Created), 422 (Unprocessable Entity), 500 (Internal Server Error)
+| Endpoint          | Description            | Response codes                                                            |
+| ----------------- | ---------------------- | ------------------------------------------------------------------------- |
+| `GET /items/{id}` | Retrieve an item by ID | 200 (OK), 400 (Bad Request), 404 (Not Found), 500 (Internal Server Error) |
+| `POST /items`     | Create a new item      | 201 (Created), 422 (Unprocessable Entity), 500 (Internal Server Error)    |
 
 ### Item model
 
-Field | Type | Description | Required
---- | --- | --- | ---
-`id` | UUID string | Unique item identifier (auto-generated, 1-50 chars) | No
-`name` | string | Human-readable item name (1-100 chars) | Yes
+| Field  | Type        | Description                                         | Required |
+| ------ | ----------- | --------------------------------------------------- | -------- |
+| `id`   | UUID string | Unique item identifier (auto-generated, 1-50 chars) | No       |
+| `name` | string      | Human-readable item name (1-100 chars)              | Yes      |
 
 ### Environment variables
 
-Variable | Description | Required | Default
---- | --- | --- | ---
-`TABLE_NAME` | DynamoDB table name | Yes | -
-`SERVICE_NAME` | Powertools service name | No | `rest-api`
-`METRICS_NAMESPACE` | Powertools metrics namespace | No | `RestApi`
-`LOG_LEVEL` | Log level for the Lambda Logger | No | `INFO`
+| Variable            | Description                     | Required | Default    |
+| ------------------- | ------------------------------- | -------- | ---------- |
+| `TABLE_NAME`        | DynamoDB table name             | Yes      | -          |
+| `SERVICE_NAME`      | Powertools service name         | No       | `rest-api` |
+| `METRICS_NAMESPACE` | Powertools metrics namespace    | No       | `RestApi`  |
+| `LOG_LEVEL`         | Log level for the Lambda Logger | No       | `INFO`     |

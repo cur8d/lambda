@@ -2,7 +2,7 @@ site_name: AWS Lambda Templates - Python
 repo_url: https://github.com/amrabed/aws-lambda-templates
 repo_name: amrabed/aws-lambda-templates
 edit_uri: edit/main/docs/
-copyright: Copyright &copy; 2026 
+copyright: Copyright &copy; 2026
 
 theme:
   name: material
@@ -22,48 +22,48 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
-  - announce.dismiss
-  - content.action.edit
-  - content.action.view
-  - content.code.annotate
-  - content.code.copy
-  - content.tooltips
-  - navigation.footer
-  - navigation.indexes
-  - navigation.sections
-  - navigation.tabs
-  - navigation.tabs.sticky
-  - navigation.tracking
-  - navigation.top
-  - search.highlight
-  - search.suggest
-  - toc.follow
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - toc.follow
 
 nav:
   - Overview:
-    - Overview: README.md
-    - Contributing: CONTRIBUTING.md
-    - License: LICENSE.md
+      - Overview: README.md
+      - Contributing: CONTRIBUTING.md
+      - License: LICENSE.md
   - Templates:
-    - Bedrock Agent: template/agent.md
-    - GraphQL API: template/graphql.md
-    - REST API: template/api.md
-    - DynamoDB Stream: template/stream.md
-    - EventBridge: template/eventbridge.md
-    - S3 to SQS: template/s3.md
-    - SQS to DynamoDB: template/sqs.md
+      - Bedrock Agent: template/agent.md
+      - GraphQL API: template/graphql.md
+      - REST API: template/api.md
+      - DynamoDB Stream: template/stream.md
+      - EventBridge: template/eventbridge.md
+      - S3 to SQS: template/s3.md
+      - SQS to DynamoDB: template/sqs.md
   - Reference:
-    - Bedrock Agent: reference/agent.md
-    - GraphQL API: reference/graphql.md
-    - REST API: reference/api.md
-    - DynamoDB Stream: reference/stream.md
-    - EventBridge: reference/eventbridge.md
-    - S3: reference/s3.md
-    - SQS: reference/sqs.md
-    - Models: reference/models.md
-    - Queue: reference/queue.md
-    - Repository: reference/repository.md
-    - Settings: reference/settings.md
+      - Bedrock Agent: reference/agent.md
+      - GraphQL API: reference/graphql.md
+      - REST API: reference/api.md
+      - DynamoDB Stream: reference/stream.md
+      - EventBridge: reference/eventbridge.md
+      - S3: reference/s3.md
+      - SQS: reference/sqs.md
+      - Models: reference/models.md
+      - Queue: reference/queue.md
+      - Repository: reference/repository.md
+      - Settings: reference/settings.md
 
 plugins:
   - search
@@ -72,4 +72,4 @@ plugins:
         python:
           paths: [.]
           options:
-            docstring_style: google  # Or numpy, reST, etc., based on your code style
+            docstring_style: google # Or numpy, reST, etc., based on your code style

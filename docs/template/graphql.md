@@ -36,22 +36,22 @@ The GraphQL schema is defined in `templates/graphql/schema.graphql`:
 
 ```graphql
 schema {
-    query: Query
-    mutation: Mutation
+  query: Query
+  mutation: Mutation
 }
 
 type Query {
-    getItem(id: ID!): Item
-    listItems: [Item]
+  getItem(id: ID!): Item
+  listItems: [Item]
 }
 
 type Mutation {
-    createItem(name: String!): Item
+  createItem(name: String!): Item
 }
 
 type Item {
-    id: ID!
-    name: String!
+  id: ID!
+  name: String!
 }
 ```
 
@@ -79,16 +79,16 @@ def create_item(name: str) -> dict:
 
 ### Item model
 
-Field | Type | Description | Required
---- | --- | --- | ---
-`id` | UUID string | Unique item identifier (auto-generated, 1-50 chars) | No
-`name` | string | Human-readable item name (1-100 chars) | Yes
+| Field  | Type        | Description                                         | Required |
+| ------ | ----------- | --------------------------------------------------- | -------- |
+| `id`   | UUID string | Unique item identifier (auto-generated, 1-50 chars) | No       |
+| `name` | string      | Human-readable item name (1-100 chars)              | Yes      |
 
 ### Environment variables
 
-Variable | Description | Required | Default
---- | --- | --- | ---
-`TABLE_NAME` | DynamoDB table name | Yes | -
-`SERVICE_NAME` | Powertools service name | No | `graphql-api`
-`METRICS_NAMESPACE` | Powertools metrics namespace | No | `GraphQLApi`
-`LOG_LEVEL` | Log level for the Lambda Logger | No | `INFO`
+| Variable            | Description                     | Required | Default       |
+| ------------------- | ------------------------------- | -------- | ------------- |
+| `TABLE_NAME`        | DynamoDB table name             | Yes      | -             |
+| `SERVICE_NAME`      | Powertools service name         | No       | `graphql-api` |
+| `METRICS_NAMESPACE` | Powertools metrics namespace    | No       | `GraphQLApi`  |
+| `LOG_LEVEL`         | Log level for the Lambda Logger | No       | `INFO`        |

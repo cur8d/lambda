@@ -1,4 +1,3 @@
-
 # Contributing
 
 First off, thanks for taking the time to contribute! ❤️
@@ -16,6 +15,7 @@ All types of contributions are encouraged and valued. Here are some ways you can
 ## Contributing to the code
 
 > ### Legal Notice
+>
 > When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
 
 Unless your change is trivial (typo, docs tweak etc.), please create an issue to discuss the change before creating a pull request.
@@ -42,11 +42,13 @@ You'll need the following prerequisites:
 mise run install
 mise run dev
 ```
+
 - Create a new branch (with a descriptive name) for your changes:
 
 ```bash
 git checkout -b my-new-feature  # use descriptive branch name
 ```
+
 - Make your code changes
 - Run tests and linting locally to make sure everything is working as expected.
 
@@ -54,16 +56,18 @@ git checkout -b my-new-feature  # use descriptive branch name
 mise run lint
 mise run test
 ```
+
 - Commit your changes and push your branch to GitHub
+
 ```bash
 git add .
 git commit -m "My new feature"  # use descriptive commit message
 git push origin my-new-feature
 ```
+
 - Create a pull request, and request review from the team
 
 > Please follow the pull request template and fill in as much information as possible. Link to any relevant issues and include a description of your changes.
-
 
 ### Code documentation
 
@@ -85,11 +89,13 @@ The project uses [Hypothesis](https://hypothesis.readthedocs.io) for property-ba
 Project Documentation is written in Markdown and built using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). API documentation is built from docstrings using [mkdocstrings](https://mkdocstrings.github.io/).
 
 To preview the documentation locally, run:
+
 ```bash
 mise run local
 ```
 
 ## Reporting Bugs
+
 #### Before submitting a bug report
 
 A good bug report shouldn't leave others needing to chase you up for more information. Therefore, we ask you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible.
@@ -100,19 +106,18 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 - Also make sure to search the internet (including Stack Overflow) to see if users outside of the GitHub community have discussed the issue.
 - Collect information about the bug, e.g., Stack trace (Traceback), OS, platform, and version, etc.
 
-
 #### How to submit a good bug report?
 
 - Open an issue using the **Bug Report** template.
 - Explain the behavior you would expect and the actual behavior.
-- Provide as much context as possible and describe the *reproduction steps* that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
+- Provide as much context as possible and describe the _reproduction steps_ that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
 - Provide the information you collected in the previous section.
 
 Once submitted, the team will try to reproduce the issue with your provided steps, and label the issue accordingly.
 
 ## Requesting Features
-Features requests are tracked as GitHub issues.
 
+Features requests are tracked as GitHub issues.
 
 #### Before Submitting a feature request
 
@@ -120,7 +125,6 @@ Features requests are tracked as GitHub issues.
 - Read the documentation carefully and find out if the functionality is already covered.
 - Search existing issues to see if the feature has already been requested. If it has, add a comment to the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset.
-
 
 #### How to submit a good feature request?
 

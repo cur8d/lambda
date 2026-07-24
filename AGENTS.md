@@ -79,7 +79,6 @@ mise run init --name="my-project" --description="My description" --author="Name"
 - Deploy locally using LocalStack: copy `.env.local.example` to `.env.local` and set token from [app.localstack.cloud](https://app.localstack.cloud), then `mise run local:deploy <stack>` (alias `local <stack>`, `dl <stack>`).
 - Destroy locally from LocalStack: `mise run local:destroy <stack>` (alias `Dl <stack>`).
 
-
 ## Testing Guidelines
 
 - Use pytest, not unittest
@@ -185,15 +184,19 @@ if __name__ == "__main__":
 ```
 
 ### Data Models
+
 - Always move all data models to a separate `models.py` file within the template directory.
 
 ### Event Types
+
 - Always use AWS Lambda Powertools event types for parsing and type hinting incoming events.
 
 ### SQS Interactions
+
 - Use a separate `queue.py` module with a `Queue` class to encapsulate all SQS interactions (initialization, publishing, etc.).
 
 ### Handler Structure
+
 - Create a `Handler` class with a `handle_record` (or similar) method.
 - Pass the `Handler` instance to the main Lambda entry point.
 - Decorate handler methods with `@tracer.capture_method`.
@@ -201,4 +204,5 @@ if __name__ == "__main__":
 - For S3 events, manually iterate over records and raise an exception if any record fails to ensure the entire batch is retried by the S3 event source.
 
 ### Lambda Entry Point
+
 - The main Lambda entry point should be named `main`.

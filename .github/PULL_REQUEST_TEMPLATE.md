@@ -7,6 +7,7 @@
 -->
 
 ## Pull Request Type
+
 - [ ] Bug Fix
 - [ ] Feature
 - [ ] Optimization
@@ -15,6 +16,7 @@
 - [ ] Dependency Update
 
 ## Summary
+
 _Please replace this line with a brief description of the changes you've made_
 
 ## Related Issues
@@ -36,9 +38,11 @@ automatically close the issue.
 _Please replace this line with instructions on how to test your changes_
 
 ## Submission Checklist
+
 Before submitting a Pull Request, please ensure you've done the following:
 <!-- - [ ] Read the [contributing guide](.github/CONTRIBUTING.md)
 - [ ] Read the [code of conduct](.github/CODE_OF_CONDUCT.md) -->
+
 - [ ] Created a small PR
 - [ ] Tested your changes
 - [ ] Used descriptive commit messages
