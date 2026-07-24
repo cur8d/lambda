@@ -45,21 +45,19 @@ def get_item(item_id: str) -> dict:
     return handler.get_item(item_id)
 ```
 
-
 ### Item model
 
-Field | Type | Description | Required
---- | --- | --- | ---
-`id` | UUID string | Unique item identifier (auto-generated, 1-50 chars) | No
-`name` | string | Human-readable item name (1-100 chars) | Yes
-`description` | string | Human-readable item description (max 500 chars) | No
-
+| Field         | Type        | Description                                         | Required |
+| ------------- | ----------- | --------------------------------------------------- | -------- |
+| `id`          | UUID string | Unique item identifier (auto-generated, 1-50 chars) | No       |
+| `name`        | string      | Human-readable item name (1-100 chars)              | Yes      |
+| `description` | string      | Human-readable item description (max 500 chars)     | No       |
 
 ### Environment variables
 
-Variable | Description | Required | Default
---- | --- | --- | ---
-`TABLE_NAME` | DynamoDB table name | Yes | -
-`SERVICE_NAME` | Powertools service name | No | `bedrock-agent`
-`METRICS_NAMESPACE` | Powertools metrics namespace | No | `BedrockAgent`
-`LOG_LEVEL` | Log level for the Lambda Logger | No | `INFO`
+| Variable            | Description                     | Required | Default         |
+| ------------------- | ------------------------------- | -------- | --------------- |
+| `TABLE_NAME`        | DynamoDB table name             | Yes      | -               |
+| `SERVICE_NAME`      | Powertools service name         | No       | `bedrock-agent` |
+| `METRICS_NAMESPACE` | Powertools metrics namespace    | No       | `BedrockAgent`  |
+| `LOG_LEVEL`         | Log level for the Lambda Logger | No       | `INFO`          |

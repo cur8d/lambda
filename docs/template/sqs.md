@@ -1,4 +1,5 @@
 # SQS — Batch Processing
+
 A Lambda function that handles SQS messages by batch processing them and storing the processed results into a DynamoDB table.
 Partial batch failure reporting is enabled so that individual record failures do not cause the entire batch to be retried.
 
@@ -29,27 +30,29 @@ mise run deploy sqs
 ### Data models
 
 #### SqsMessage
+
 Parsed from the SQS message body.
 
-Field | Type | Description | Required
---- | --- | --- | ---
-`id` | string | Unique identifier for the message (1-50 chars) | No
-`content` | string | The main content of the message (1-1000 chars) | Yes
+| Field     | Type   | Description                                    | Required |
+| --------- | ------ | ---------------------------------------------- | -------- |
+| `id`      | string | Unique identifier for the message (1-50 chars) | No       |
+| `content` | string | The main content of the message (1-1000 chars) | Yes      |
 
 #### ProcessedItem
+
 Written to the DynamoDB table.
 
-Field | Type | Description | Required
---- | --- | --- | ---
-`id` | string | Unique identifier for the item (partition key, 1-50 chars) | No
-`content` | string | The processed content (1-1000 chars) | Yes
-`status` | string | Processing status (1-50 chars) | Yes
+| Field     | Type   | Description                                                | Required |
+| --------- | ------ | ---------------------------------------------------------- | -------- |
+| `id`      | string | Unique identifier for the item (partition key, 1-50 chars) | No       |
+| `content` | string | The processed content (1-1000 chars)                       | Yes      |
+| `status`  | string | Processing status (1-50 chars)                             | Yes      |
 
 ### Environment variables
 
-Variable | Description | Required | Default
---- | --- | --- | ---
-`TABLE_NAME` | Destination DynamoDB table name | Yes | -
-`SERVICE_NAME` | Powertools service name | No | `sqs-processor`
-`METRICS_NAMESPACE` | Powertools metrics namespace | No | `SqsProcessor`
-`LOG_LEVEL` | Log level for the Lambda Logger | No | `INFO`
+| Variable            | Description                     | Required | Default         |
+| ------------------- | ------------------------------- | -------- | --------------- |
+| `TABLE_NAME`        | Destination DynamoDB table name | Yes      | -               |
+| `SERVICE_NAME`      | Powertools service name         | No       | `sqs-processor` |
+| `METRICS_NAMESPACE` | Powertools metrics namespace    | No       | `SqsProcessor`  |
+| `LOG_LEVEL`         | Log level for the Lambda Logger | No       | `INFO`          |

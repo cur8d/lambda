@@ -1,4 +1,5 @@
 # AWS Lambda Templates - Python
+
 [![Python](https://img.shields.io/badge/python-3.14+-3776AB.svg?logo=python&style=flat-square)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=cur8d_lambda&metric=coverage)](https://sonarcloud.io/summary/new_code?id=cur8d_lambda)
@@ -45,25 +46,28 @@ Templates come pre-wired with:
 - **Tool Management & Tasks**: [mise](https://mise.jdx.dev/) for managing project tools and automating common development tasks
 
 ### GitHub files
+
 The repository also comes preloaded with these GitHub files:
 
 - AI Agent guidelines
 - Pull request template
 - Issue templates
-    + Bug report
-    + Feature request
-    + Question
+  - Bug report
+  - Feature request
+  - Question
 - Contributing guidelines
 - Funding file
 - Code owners
 - MIT License
 
 ## How to use
+
 Click the button below (or [use this link](https://github.com/amrabed/aws-lambda-templates/generate)) to create a new repository for your project, then clone the new repository. Enjoy!
 
 [![Use this template](https://img.shields.io/badge/Use%20this%20template-238636?style=for-the-badge)](https://github.com/amrabed/aws-lambda-templates/generate)
 
 ### Initialize the project
+
 Run `mise run init` once after cloning, before any other setup steps:
 
 ```bash
@@ -72,42 +76,52 @@ mise run init --name="my-project" --description="My project description" --autho
 
 Pass the following parameters:
 
-Parameter | Description
---- | ---
-`name` | Project new name
-`description` | Project short description
-`author` | Author name
-`email` | Author email
-`github` | GitHub username
+| Parameter     | Description               |
+| ------------- | ------------------------- |
+| `name`        | Project new name          |
+| `description` | Project short description |
+| `author`      | Author name               |
+| `email`       | Author email              |
+| `github`      | GitHub username           |
 
 ## Prerequisites
 
 ### Dev container
+
 - Docker
 
 ### Local environment
+
 - [mise](https://mise.jdx.dev/)
 - Docker (for running LocalStack locally)
 
 ## Setup
 
 ### Set up dev environment
+
 To set up the local dev environment, run:
+
 ```bash
 mise run dev
 ```
+
 That will:
+
 - Install the project dependencies defined in `pyproject.toml`
 - Install the pre-commit hooks for the project to format and lint your code automatically before committing
 
 ### Format and lint code
+
 To format and lint project code, run:
+
 ```bash
 mise run lint  # alias: l
 ```
 
 ### Run tests with coverage
+
 To run all tests (including Hypothesis property-based tests) and show the coverage report, run:
+
 ```bash
 mise run test  # alias: t
 ```
@@ -124,8 +138,8 @@ mise run new <name>  # alias: n <name>
 
 This runs the `new` script, which builds a skeleton for the new template from `.template`.
 
-
 ### Synthesize infrastructure
+
 Infrastructure is defined as AWS CDK stacks under `infra/stacks/`.
 The CDK entry point is `infra/app.py`.
 
@@ -140,39 +154,47 @@ mise run deploy <stack>  # alias: d <stack>
 ```
 
 Pass `--profile` (or `-p`) to use a named AWS CLI profile:
+
 ```bash
 mise run deploy <stack> --profile <my-profile>
 ```
 
 ### Destroy a stack
+
 ```bash
 mise run destroy <stack>  # alias: D <stack>
 ```
 
 ### Deploy a stack locally (LocalStack)
+
 To deploy CDK stacks locally without an AWS account:
 
 1. Copy `.env.local.example` to `.env.local` and set your auth token from [app.localstack.cloud](https://app.localstack.cloud):
+
 ```bash
 cp .env.local.example .env.local
 ```
 
 2. Start LocalStack via Docker Compose:
+
 ```bash
 mise run local:up
 ```
 
 3. Deploy the stack to LocalStack:
+
 ```bash
 mise run local:deploy <stack>  # aliases: local <stack>, dl <stack>
 ```
 
 ### Destroy a local stack
+
 ```bash
 mise run local:destroy <stack>  # alias: Dl <stack>
 ```
 
 To stop the LocalStack container when finished:
+
 ```bash
 mise run local:down
 ```
@@ -180,6 +202,7 @@ mise run local:down
 ### Generating documentation
 
 To build and publish the project documentation to GitHub Pages, run:
+
 ```bash
 mise run docs
 ```
@@ -187,7 +210,9 @@ mise run docs
 That pushes the new documentation to the `gh-pages` branch. Make sure GitHub Pages is enabled in your repository settings and using the `gh-pages` branch for the documentation to be publicly available.
 
 ### Local preview
+
 To serve the documentation on a local server, run:
+
 ```bash
 mise run docs-local
 ```
@@ -197,6 +222,7 @@ mise run docs-local
 The project includes a `sonar-project.properties` file and a `verify` GitHub Actions workflow step to automatically scan your code.
 
 To enable SonarCloud analysis in GitHub Actions:
+
 1. Create a project on [SonarCloud](https://sonarcloud.io) and get a token.
 2. In your GitHub repository, go to **Settings > Secrets and variables > Actions**.
 3. Add a new repository secret named `SONAR_TOKEN` with your token value.
@@ -208,7 +234,6 @@ To enable SonarCloud analysis in GitHub Actions:
 - **Environment Variables**: Managed via `BaseSettings` in `settings.py` files.
 - **Documentation**: Every field in a Pydantic model must include a `Field(description="...")`.
 - **Repository Pattern**: All database calls are encapsulated in a `Repository` class for better testability.
-
 
 ## Project Structure
 
