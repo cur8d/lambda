@@ -1,4 +1,4 @@
-from pytest import fixture, main
+from pytest import fixture, main, raises
 
 
 @fixture(autouse=True)
@@ -59,12 +59,10 @@ def test_sensitive_data_exposure(repository, lambda_context):
 
 
 def test_get_item_invalid_id(lambda_context):
-    import pytest
-
     from templates.graphql.handler import main
 
     event = {"info": {"parentTypeName": "Query", "fieldName": "getItem"}, "arguments": {"id": "invalid!"}}
-    with pytest.raises(RuntimeError) as excinfo:
+    with raises(RuntimeError) as excinfo:
         main(event, lambda_context)
     assert "Invalid item ID" in str(excinfo.value)
 
@@ -76,14 +74,61 @@ def test_error_message_information_leakage(lambda_context, mocker):
 
     mocker.patch.object(handler.repository, "get_item", side_effect=Exception("Database connection failed"))
 
-    import pytest
-
-    with pytest.raises(RuntimeError) as excinfo:
+    with raises(RuntimeError) as excinfo:
         get_item("123")
 
     assert "Database connection failed" not in str(excinfo.value)
     assert "Cause:" not in str(excinfo.value)
     assert excinfo.value.__cause__ is None
+
+
+def test_get_item_not_found(repository, lambda_context):
+    from templates.graphql.handler import get_item
+
+    result = get_item("999")
+    assert result is None
+
+
+def test_get_item_validation_error(repository, lambda_context, mocker):
+    from templates.graphql.handler import get_item
+
+    repository.put_item({"id": "123", "name": ""})  # MISSING FIELDS
+
+    with raises(RuntimeError) as excinfo:
+        get_item("123")
+    assert "Item validation failed" in str(excinfo.value)
+
+
+def test_list_items_exception(repository, lambda_context, mocker):
+    from templates.graphql import handler
+    from templates.graphql.handler import list_items
+
+    mocker.patch.object(handler.repository, "list_items", side_effect=Exception("Database error"))
+
+    with raises(RuntimeError) as excinfo:
+        list_items()
+    assert "Failed to list items" in str(excinfo.value)
+
+
+def test_create_item_validation_error(repository, lambda_context):
+    from templates.graphql.handler import create_item
+
+    # Create item with bad data if possible, though it only takes name.
+    # If name is empty, it should throw ValidationError.
+    with raises(RuntimeError) as excinfo:
+        create_item("")
+    assert "Invalid item data" in str(excinfo.value)
+
+
+def test_create_item_exception(repository, lambda_context, mocker):
+    from templates.graphql import handler
+    from templates.graphql.handler import create_item
+
+    mocker.patch.object(handler.repository, "put_item", side_effect=Exception("Database error"))
+
+    with raises(RuntimeError) as excinfo:
+        create_item("Test Item")
+    assert "Failed to create item" in str(excinfo.value)
 
 
 if __name__ == "__main__":

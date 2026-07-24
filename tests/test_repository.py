@@ -27,5 +27,15 @@ def test_delete_item_given_existing_item_then_deletes_item_from_table(repository
     assert mock_table.get_item(Key={"id": "xyz"}).get("Item") is None
 
 
+def test_list_items_returns_all_items(repository, mock_table):
+    """list_items returns all items from the DynamoDB table"""
+    mock_table.put_item(Item={"id": "1", "name": "Item 1"})
+    mock_table.put_item(Item={"id": "2", "name": "Item 2"})
+    items = repository.list_items()
+    assert len(items) == 2
+    assert {"id": "1", "name": "Item 1"} in items
+    assert {"id": "2", "name": "Item 2"} in items
+
+
 if __name__ == "__main__":
     main()

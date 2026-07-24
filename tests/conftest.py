@@ -7,6 +7,8 @@ from pytest import fixture
 
 # aws_xray_sdk is not installed in the test environment; stub it out before
 # any handler module is imported so that Powertools Tracer initialises cleanly.
+# We use unittest.mock.MagicMock here because pytest-mock fixtures are not
+# available at module initialization time.
 sys.modules.setdefault("aws_xray_sdk", MagicMock())
 sys.modules.setdefault("aws_xray_sdk.core", MagicMock())
 
@@ -22,8 +24,8 @@ def aws_credentials(monkeypatch):
 
 
 @fixture
-def lambda_context():
-    ctx = MagicMock(spec=LambdaContext)
+def lambda_context(mocker):
+    ctx = mocker.MagicMock(spec=LambdaContext)
     ctx.function_name = "test-function"
     ctx.memory_limit_in_mb = 128
     ctx.invoked_function_arn = "arn:aws:lambda:us-east-1:123456789012:function:test-function"

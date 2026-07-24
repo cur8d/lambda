@@ -144,5 +144,43 @@ def test_dynamodb_write_failure_reports_batch_item_failure(mock_repo, lambda_con
     assert len(result["batchItemFailures"]) == 1
 
 
+def test_handler_process_validation_error(mock_repo, lambda_context, mocker):
+    from pydantic import ValidationError
+
+    import templates.stream.handler as handler_module
+
+    mocker.patch.object(
+        handler_module.DestinationItem,
+        "model_validate",
+        side_effect=[ValidationError.from_exception_data("error", line_errors=[]), mocker.MagicMock()],
+    )
+
+    event = _stream_event(_insert_record("abc", "Widget"), _insert_record("def", "Gadget"))
+    result = handler_module.main(event, lambda_context)
+
+    # Should log error and return None for the first, which raises ValueError
+    # The second one should pass (mocked to return MagicMock)
+    assert len(result["batchItemFailures"]) == 1
+
+
+def test_handler_unknown_event(mock_repo, lambda_context):
+    import templates.stream.handler as handler_module
+
+    unknown_record = {
+        # Omit eventName to simulate unhandled or missing event type (evaluates to None in Powertools)
+        "dynamodb": {
+            "Keys": {"id": {"S": "abc"}},
+            "SequenceNumber": "seq-abc",
+        },
+    }
+
+    event = _stream_event(unknown_record)
+    result = handler_module.main(event, lambda_context)
+
+    assert result == {"batchItemFailures": []}
+    mock_repo.put_item.assert_not_called()
+    mock_repo.delete_item.assert_not_called()
+
+
 if __name__ == "__main__":
     main()

@@ -1,7 +1,9 @@
 # AWS Lambda Templates - Python
 [![Python](https://img.shields.io/badge/python-3.14+-3776AB.svg?logo=python&style=flat-square)](https://python.org)
-[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-D7FF64.svg?logo=ruff&style=flat-square)](https://docs.astral.sh/ruff)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=cur8d_lambda&metric=coverage)](https://sonarcloud.io/summary/new_code?id=cur8d_lambda)
+[![Code Quality](https://sonarcloud.io/api/project_badges/measure?project=cur8d_lambda&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=cur8d_lambda)
+[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-D7FF64.svg?logo=ruff&style=flat-square)](https://docs.astral.sh/ruff)
 
 Production-ready plug-and-play **AWS Lambda templates in Python** for different real-life scenarios.
 
@@ -34,6 +36,7 @@ Templates come pre-wired with:
 - **Local AWS Deployment**: [LocalStack](https://localstack.cloud) integration for local CDK deployment and testing without an AWS account
 - **Testing**: Comprehensive [pytest](https://pytest.org) suite with [moto](http://docs.getmoto.org) for AWS mocking and [hypothesis](https://hypothesis.readthedocs.io) for property-based testing
 - **Code Quality**: [ruff](https://docs.astral.sh/ruff) for linting and formatting, [pyright](https://microsoft.github.io/pyright) for type checking, and test coverage using [coverage](https://coverage.readthedocs.io)
+- **Code Analysis**: [SonarQube](https://www.sonarsource.com/) / [SonarCloud](https://sonarcloud.io/) integration for code quality and security checks
 - **Dependency Control**: [uv](https://docs.astral.sh/uv/) for dependency management and [Dependabot](https://docs.github.com/en/code-security/dependabot) for automated dependency updates
 - **Documentation**: Automatic documentation using [MkDocs](https://www.mkdocs.org) and [mkdocstrings](https://mkdocstrings.github.io)
 - **Development environment**: [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) for dockerized development environment
@@ -188,6 +191,16 @@ To serve the documentation on a local server, run:
 ```bash
 mise run docs-local
 ```
+
+### Code Analysis with SonarQube / SonarCloud
+
+The project includes a `sonar-project.properties` file and a `verify` GitHub Actions workflow step to automatically scan your code.
+
+To enable SonarCloud analysis in GitHub Actions:
+1. Create a project on [SonarCloud](https://sonarcloud.io) and get a token.
+2. In your GitHub repository, go to **Settings > Secrets and variables > Actions**.
+3. Add a new repository secret named `SONAR_TOKEN` with your token value.
+4. Update `sonar-project.properties` with your `sonar.organization` and `sonar.projectKey`.
 
 ## Coding Conventions
 

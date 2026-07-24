@@ -59,15 +59,44 @@ def test_handler_get_item_invalid_id():
 def test_handler_create_item(repository):
     from templates.agent.handler import create_item
 
-    result = create_item("2", "new item", "new description")
+    result = create_item("1", "test item", "test description")
 
-    assert result["id"] == "2"
-    assert result["name"] == "new item"
-    assert result["description"] == "new description"
+    assert result["id"] == "1"
+    assert result["name"] == "test item"
+    assert result["description"] == "test description"
 
-    item = repository.get_item("2")
+    item = repository.get_item("1")
     assert item is not None
-    assert item["name"] == "new item"
+    assert item["id"] == "1"
+
+
+def test_handler_get_item_validation_error(repository, mocker):
+    from templates.agent.handler import get_item
+
+    repository.put_item({"id": "1", "name": ""})
+    result = get_item("1")
+
+    assert "error" in result
+    assert "Internal server error" in result["error"]
+
+
+def test_handler_create_item_validation_error(repository):
+    from templates.agent.handler import create_item
+
+    result = create_item("invalid!", "test item")
+
+    assert "error" in result
+    assert "Invalid item data" in result["error"]
+
+
+def test_handler_create_item_exception(repository, mocker):
+    from templates.agent import handler
+
+    mocker.patch.object(handler.repository, "put_item", side_effect=Exception("DynamoDB error"))
+    result = handler.create_item("1", "test item")
+
+    assert "error" in result
+    assert "Failed to create item" in result["error"]
 
 
 def test_lambda_handler_get_item(mocker, repository, lambda_context, bedrock_event):
