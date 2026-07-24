@@ -40,6 +40,10 @@ def main(name: str, description: str, author: str, email: str, github: str):
         ("docs/README.md", r"^# .*", f"# {description}"),
         (".github/CODEOWNERS", r"@.*", f"@{github}"),
         (".github/FUNDING.yml", r"^github: .*", f"github: {github}"),
+        ("sonar-project.properties", r"^sonar\.projectKey=.*", f"sonar.projectKey={name}"),
+        ("sonar-project.properties", r"^sonar\.organization=.*", f"sonar.organization={github}"),
+        ("docs/README.md", r"\?project=[a-zA-Z0-9_-]+", f"?project={name}"),
+        ("docs/README.md", r"\?id=[a-zA-Z0-9_-]+", f"?id={name}"),
     ]
 
     for filepath, pattern, replacement in replacements:
