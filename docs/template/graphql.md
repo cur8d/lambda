@@ -64,9 +64,11 @@ The handler in `templates/graphql/handler.py` implements the resolvers:
 def get_item(id: str) -> dict | None:
     return repository.get_item(id)
 
+
 @app.resolver(type_name="Query", field_name="listItems")
 def list_items() -> list[dict]:
     return repository.list_items()
+
 
 @app.resolver(type_name="Mutation", field_name="createItem")
 def create_item(name: str) -> dict:

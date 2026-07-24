@@ -106,6 +106,7 @@ Every field in a Pydantic model or pydantic-settings class must be documented us
 ```python
 from pydantic import BaseModel, Field
 
+
 class Item(BaseModel, populate_by_name=True, alias_generator=to_camel):
     id: str = Field(description="Unique item identifier.")
     name: str = Field(description="Human-readable item name.")
@@ -119,6 +120,7 @@ All `BaseModel` subclasses must be defined with `populate_by_name=True` and `ali
 from uuid import uuid4
 from pydantic import BaseModel, Field
 from pydantic.alias_generators import to_camel
+
 
 class Item(BaseModel, populate_by_name=True, alias_generator=to_camel):
     item_id: str = Field(description="Unique item identifier.", default_factory=str(uuid4()))
@@ -134,7 +136,10 @@ Do not use `model_config = ConfigDict(...)` or `model_config = SettingsConfigDic
 ```python
 # Good
 class Item(BaseModel, extra="allow", populate_by_name=True, alias_generator=to_camel): ...
+
+
 class Settings(BaseSettings, case_sensitive=False): ...
+
 
 # Bad
 class Item(BaseModel):
@@ -147,6 +152,7 @@ Each scenario defines a `Repository` class in `repository.py` that owns all `bot
 
 ```python
 from boto3 import resource
+
 
 class Repository:
     def __init__(self, table_name: str) -> None:
