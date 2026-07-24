@@ -1,8 +1,8 @@
 # AWS Lambda Templates - Python
 [![Python](https://img.shields.io/badge/python-3.14+-3776AB.svg?logo=python&style=flat-square)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=cur8d_lambda&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=cur8d_lambda)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=cur8d_lambda&metric=coverage)](https://sonarcloud.io/summary/new_code?id=cur8d_lambda)
+[![Code Quality](https://sonarcloud.io/api/project_badges/measure?project=cur8d_lambda&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=cur8d_lambda)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-D7FF64.svg?logo=ruff&style=flat-square)](https://docs.astral.sh/ruff)
 
 Production-ready plug-and-play **AWS Lambda templates in Python** for different real-life scenarios.
