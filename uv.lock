@@ -1129,7 +1129,7 @@ infra = [
 [package.metadata]
 requires-dist = [
     { name = "aws-lambda-powertools", specifier = ">=3.31.1" },
-    { name = "boto3", specifier = ">=1.43.55" },
+    { name = "boto3", specifier = ">=1.43.56" },
     { name = "pydantic", specifier = ">=2.13.4" },
     { name = "pydantic-settings", specifier = ">=2.14.2" },
     { name = "requests", specifier = ">=2.34.2" },
@@ -1139,7 +1139,7 @@ requires-dist = [
 dev = [
     { name = "click", specifier = ">=8.4.2" },
     { name = "coverage", specifier = ">=7.15.2" },
-    { name = "hypothesis", specifier = ">=6.161.1" },
+    { name = "hypothesis", specifier = ">=6.161.2" },
     { name = "moto", specifier = ">=5.2.1" },
     { name = "pre-commit", specifier = ">=4.6.1" },
     { name = "pyright", specifier = ">=1.1.411" },
@@ -1153,7 +1153,7 @@ docs = [
     { name = "mkdocstrings", extras = ["python"], specifier = ">=1.0.6" },
 ]
 infra = [
-    { name = "aws-cdk-lib", specifier = ">=2.262.0" },
+    { name = "aws-cdk-lib", specifier = ">=2.262.1" },
     { name = "constructs", specifier = ">=10.7.1" },
 ]
 
