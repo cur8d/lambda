@@ -16,7 +16,7 @@ dependencies = [
 
 [project.scripts]
 new = "scripts.new:main"
-rename = "scripts.rename:main"
+init = "scripts.init:main"
 
 [dependency-groups]
 infra = [
