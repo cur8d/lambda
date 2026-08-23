@@ -41,7 +41,6 @@ class ApiSession:
             pool_connections=pool_connections,
             pool_maxsize=pool_maxsize,
         )
-        self._session.mount("http://", adapter)
         self._session.mount("https://", adapter)
 
     def get(self, url: str, **kwargs: Any) -> Response:
