@@ -10,7 +10,7 @@ dependencies = [
     "pydantic>=2.13.4",
     "pydantic-settings>=2.15.0",
     "aws-lambda-powertools>=3.34.0",
-    "boto3>=1.43.78",
+    "boto3>=1.43.79",
     "requests>=2.34.2",
 ]
 
