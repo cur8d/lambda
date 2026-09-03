@@ -10,7 +10,7 @@ dependencies = [
     "pydantic>=2.13.4",
     "pydantic-settings>=2.15.0",
     "aws-lambda-powertools>=3.34.0",
-    "boto3>=1.43.78",
+    "boto3>=1.43.79",
     "requests>=2.34.2",
 ]
 
@@ -60,6 +60,10 @@ fail_under = 90
 [tool.pyright]
 exclude = ["**/__pycache__", "**/.pytest_cache", ".venv"]
 reportMissingImports = "error"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
 
 [build-system]
 requires = ["hatchling"]
