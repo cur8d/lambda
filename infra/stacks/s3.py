@@ -22,6 +22,7 @@ class S3SqsStack(Stack):
             "SourceBucket",
             removal_policy=RemovalPolicy.DESTROY,
             auto_delete_objects=True,
+            enforce_ssl=True,
         )
 
         function = Function(
