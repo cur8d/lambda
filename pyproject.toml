@@ -61,6 +61,10 @@ fail_under = 90
 exclude = ["**/__pycache__", "**/.pytest_cache", ".venv"]
 reportMissingImports = "error"
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
