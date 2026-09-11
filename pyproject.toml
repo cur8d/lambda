@@ -10,7 +10,7 @@ dependencies = [
     "pydantic>=2.13.4",
     "pydantic-settings>=2.15.0",
     "aws-lambda-powertools>=3.34.0",
-    "boto3>=1.43.79",
+    "boto3>=1.43.89",
     "requests>=2.34.2",
 ]
 
@@ -25,7 +25,7 @@ infra = [
 ]
 dev = [
     "pytest>=9.1.1",
-    "ruff>=0.16.4",
+    "ruff>=0.16.6",
     "coverage>=7.15.4",
     "pre-commit>=4.6.2",
     "pyright>=1.1.411",
