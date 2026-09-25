@@ -196,3 +196,10 @@ _.file = ".env.local"
 
 [tasks."local:destroy".env]
 _.file = ".env.local"
+
+[tasks.audit]
+description = "Run security audits"
+run = """
+pnpm audit
+uv run pip-audit
+"""
