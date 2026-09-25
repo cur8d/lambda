@@ -33,6 +33,7 @@ dev = [
     "moto>=5.2.1",
     "hypothesis>=6.165.10",
     "click>=8.4.2",
+    "pip-audit>=2.10.1",
 ]
 docs = [
     "mkdocs>=1.6.1",
