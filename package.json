@@ -5,8 +5,8 @@
     "destroy": "cdklocal destroy --force"
   },
   "dependencies": {
-    "aws-cdk": "^2.1139.0",
+    "aws-cdk": "^2.1143.0",
     "aws-cdk-local": "^3.0.4",
-    "prettier": "^3.9.6"
+    "prettier": "^3.9.9"
   }
 }
