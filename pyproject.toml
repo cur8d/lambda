@@ -10,7 +10,7 @@ dependencies = [
     "pydantic>=2.13.4",
     "pydantic-settings>=2.15.0",
     "aws-lambda-powertools>=3.34.0",
-    "boto3>=1.43.79",
+    "boto3>=1.43.104",
     "requests>=2.34.2",
 ]
 
@@ -20,18 +20,18 @@ init = "scripts.init:main"
 
 [dependency-groups]
 infra = [
-    "aws-cdk-lib>=2.266.0",
+    "aws-cdk-lib>=2.271.0",
     "constructs>=10.8.1",
 ]
 dev = [
     "pytest>=9.1.1",
     "ruff>=0.16.4",
-    "coverage>=7.15.4",
+    "coverage>=7.16.2",
     "pre-commit>=4.6.2",
     "pyright>=1.1.411",
-    "pytest-mock>=3.15.1",
+    "pytest-mock>=3.16.0",
     "moto>=5.2.1",
-    "hypothesis>=6.165.10",
+    "hypothesis>=6.168.3",
     "click>=8.4.2",
     "pip-audit>=2.10.1",
 ]
