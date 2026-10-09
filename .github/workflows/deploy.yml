@@ -45,7 +45,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Install mise
-        uses: jdx/mise-action@v4
+        uses: jdx/mise-action@v5
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
