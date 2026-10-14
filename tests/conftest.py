@@ -2,8 +2,12 @@ import sys
 from unittest.mock import MagicMock
 
 from aws_lambda_powertools.utilities.typing import LambdaContext
+from hypothesis import settings
 from moto import mock_aws
 from pytest import fixture
+
+settings.register_profile("default", deadline=None)
+settings.load_profile("default")
 
 # aws_xray_sdk is not installed in the test environment; stub it out before
 # any handler module is imported so that Powertools Tracer initialises cleanly.
