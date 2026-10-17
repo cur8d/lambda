@@ -2,7 +2,7 @@ import re
 from os import makedirs
 from string import Template
 
-from click import command, option
+from click import UsageError, command, option
 
 FILE_MAPPINGS = {
     ".template/code/handler.pyt": "templates/{name}/handler.py",
@@ -103,6 +103,11 @@ def update_mkdocs_file(name: str, title_name: str):
 @command(context_settings={"help_option_names": ["-h", "--help"]}, help="Generate new template")
 @option("-n", "--name", help="Template name", required=True)
 def main(name: str):
+    # Validate name to prevent directory traversal or code injection
+    if not re.match(r"^[a-zA-Z0-9_-]+$", name):
+        raise UsageError(
+            f"Invalid template name '{name}'. Only alphanumeric characters, dashes, and underscores are allowed."
+        )
 
     # Read name and generate variants
     name = name.lower().replace("-", "_")
