@@ -31,11 +31,11 @@ permissions:
   contents: read
 
 jobs:
-  check:
-    uses: ./.github/workflows/check.yml
+  verify:
+    uses: ./.github/workflows/verify.yml
 
   deploy:
-    needs: check
+    needs: verify
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     strategy:
