@@ -44,6 +44,7 @@ Templates come pre-wired with:
 - **Pre-commit Validations**: [pre-commit](https://pre-commit.com) hooks
 - **Workflow Automation**: [GitHub Actions](https://github.com/features/actions) for CI/CD and documentation auto-deployment to [GitHub Pages](https://pages.github.com)
 - **Tool Management & Tasks**: [mise](https://mise.jdx.dev/) for managing project tools and automating common development tasks
+- **Agent Skills**: Built-in modular AI agent skills under `.agents/skills/` compatible with [skills.sh](https://skills.sh), Claude Code, Cursor, and Google Antigravity
 
 ### GitHub files
 
