@@ -206,3 +206,23 @@ if __name__ == "__main__":
 ### Lambda Entry Point
 
 - The main Lambda entry point should be named `main`.
+
+## Agent Skills
+
+This repository provides built-in modular skills following the open Agent Skills standard under `.agents/skills/`:
+
+| Skill | Purpose | Trigger / Usage |
+| :--- | :--- | :--- |
+| [`init-project`](.agents/skills/init-project/SKILL.md) | Initialize template into a standalone service | Initializing, bootstrapping, or configuring a new project from this repo |
+| [`new-lambda`](.agents/skills/new-lambda/SKILL.md) | Scaffold event-driven Lambda with CDK stack and tests | Creating or adding a new Lambda template or handler |
+| [`local-invoke`](.agents/skills/local-invoke/SKILL.md) | Test and invoke Lambda locally using LocalStack | Testing, invoking, or debugging Lambda execution locally |
+| [`deploy-aws`](.agents/skills/deploy-aws/SKILL.md) | Diff and deploy CDK stacks to live AWS cloud | Deploying, diffing, or releasing CDK stacks to AWS |
+
+To discover or use skills with the `skills` CLI:
+```bash
+# List available skills
+npx skills add cur8d/lambda --list
+
+# Install skills to current project
+npx skills add cur8d/lambda
+```
