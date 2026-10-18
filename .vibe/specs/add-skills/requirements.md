@@ -2,38 +2,50 @@
 
 ## Overview
 
-Equip the `cur8d/lambda` repository with modular Agent Skills following the open standard (compatible with `skills.sh`, Claude Code, Cursor, GitHub Copilot, and Google Antigravity). These skills enable AI agents to autonomously scaffold, test, and deploy Lambda event handlers and CDK infrastructure according to cur8d architecture patterns.
+Equip the `cur8d/lambda` repository with modular Agent Skills following the open standard (compatible with `skills.sh`, Claude Code, Cursor, GitHub Copilot, and Google Antigravity). These skills enable AI agents to autonomously initialize new projects from this template, scaffold new event-driven Lambda functions with CDK stacks, invoke them locally via LocalStack, and deploy to AWS.
 
 ## User Goals
 
-1. Enable developers and AI agents to quickly scaffold new Lambda handlers (API Gateway, SQS, EventBridge, S3, DynamoDB Stream) adhering to cur8d's AWS Lambda Powertools conventions and Pydantic validation.
-2. Enable agents to generate matching CDK infrastructure stacks under `infra/stacks/` and register them in `infra/app.py`.
-3. Provide local invocation and verification skills utilizing LocalStack and `mise` tasks (`mise run local:deploy`, `mise run verify`).
-4. Support distribution via `npx skills add cur8d/lambda` and project-level discovery under `.agents/skills/`.
+1. Enable developers and AI agents to initialize a new standalone Lambda service repository from this template with customized project name, description, and repository configuration.
+2. Enable agents to scaffold new event handlers (API Gateway, SQS, EventBridge, S3, DynamoDB) adhering to cur8d's AWS Lambda Powertools conventions, Pydantic validation models, and automated tests.
+3. Enable agents to invoke and test handlers locally using LocalStack (`mise run local:deploy`, `mise run local:up`).
+4. Enable agents to safely synthesize, diff, and deploy CDK stacks to live AWS cloud accounts (`mise run diff`, `mise run deploy`).
+5. Support distribution via `npx skills add cur8d/lambda` and project-level discovery under `.agents/skills/`.
 
 ## Functional Requirements
 
-1. **`add-lambda-handler` Skill**:
-   - Location: `.agents/skills/add-lambda-handler/SKILL.md`
-   - Instructions for the agent to scaffold a new handler under `templates/<event_type>/` or custom handler path.
-   - Must mandate AWS Lambda Powertools (`Logger`, `Tracer`, `Metrics`).
-   - Must mandate typed event models via Pydantic (`models.py`) and standard JSON responses.
-   - Must scaffold unit tests in `tests/test_<handler>.py` covering successful execution, invalid payloads, and error handling.
+1. **`init-project` Skill**:
+   - Location: `.agents/skills/init-project/SKILL.md`
+   - Guides the agent through customizing the template into a new standalone repository.
+   - Runs `uv run python scripts/init.py` (or prompts for project name, description, author).
+   - Resets git remotes if forked, updates `pyproject.toml`, `infra/app.py`, and documentation.
+   - Sets up `.env.local` from `.env.local.example`.
 
-2. **`add-cdk-stack` Skill**:
-   - Location: `.agents/skills/add-cdk-stack/SKILL.md`
-   - Instructions for the agent to scaffold a CDK stack in `infra/stacks/<type>_stack.py`.
-   - Wires appropriate triggers (e.g. SQS queue, API Gateway REST/HTTP API, EventBridge bus rule, DynamoDB stream).
-   - Configures environment variables, least-privilege IAM policies, and registers the stack into `infra/app.py`.
+2. **`new-lambda` Skill**:
+   - Location: `.agents/skills/new-lambda/SKILL.md`
+   - Guides the agent to scaffold a complete new Lambda service:
+     - Generates handler under `templates/<name>/handler.py` with AWS Lambda Powertools (`Logger`, `Tracer`, `Metrics`).
+     - Generates settings and Pydantic models under `templates/<name>/settings.py` and `models.py`.
+     - Generates matching CDK infrastructure stack under `infra/stacks/<name>.py` and registers it in `infra/app.py`.
+     - Generates comprehensive unit tests under `tests/<name>/test_handler.py`.
+     - Can invoke `uv run python scripts/new.py --name <name>`.
 
 3. **`local-invoke` Skill**:
    - Location: `.agents/skills/local-invoke/SKILL.md`
    - Instructions to create synthetic event payloads and test local Lambda invocation.
-   - Guides the agent to spin up LocalStack via `mise run local:up`, deploy with `mise run local:deploy <stack>`, and invoke using AWS CLI or local invoke scripts.
+   - Guides the agent to start LocalStack (`mise run local:up`), deploy stack locally (`mise run local:deploy <stack>`), and invoke handler.
 
-4. **Integration & Discoverability**:
+4. **`deploy-aws` Skill**:
+   - Location: `.agents/skills/deploy-aws/SKILL.md`
+   - Step-by-step guidance for deploying stacks to live AWS cloud:
+     1. Verify credentials and target AWS region (`aws sts get-caller-identity`).
+     2. Run `mise run verify` to ensure tests and linters pass before deployment.
+     3. Inspect changes via `mise run diff <stack>`.
+     4. Deploy via `mise run deploy <stack>`.
+     5. Verify deployment health and cloud outputs.
+
+5. **Integration & Discoverability**:
    - Update `AGENTS.md` and `docs/README.md` to document the available skills and how to run them with `npx skills`.
-   - Add a mise task `mise run skills:list` or verify skills discoverability via `npx skills`.
 
 ## Non-Functional Requirements
 

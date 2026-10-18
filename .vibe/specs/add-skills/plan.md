@@ -1,19 +1,22 @@
 # Implementation Plan: Agent Skills for cur8d Lambda
 
-Establish structured Agent Skills in `cur8d/lambda` so AI coding agents can reliably build, extend, and verify AWS Lambda solutions and CDK infrastructure.
+Establish structured Agent Skills in `cur8d/lambda` so AI coding agents can reliably initialize projects from the template, build and test new event-driven Lambda functions, invoke them locally, and deploy to AWS.
 
 ## Proposed Changes
 
 ### Skills Scaffolding
 
-#### [NEW] `.agents/skills/add-lambda-handler/SKILL.md`
-- Provide actionable instructions for creating new Lambda handlers with Powertools (Logger, Tracer, Metrics), Pydantic validation, structured responses, and unit tests.
+#### [NEW] `.agents/skills/init-project/SKILL.md`
+- Instructions for customizing the template into a standalone service repository using `scripts/init.py`.
 
-#### [NEW] `.agents/skills/add-cdk-stack/SKILL.md`
-- Provide step-by-step guidance for adding and wiring new CDK stacks under `infra/stacks/` and connecting them to `infra/app.py`.
+#### [NEW] `.agents/skills/new-lambda/SKILL.md`
+- Instructions for scaffolding complete Lambda functions, tests, and CDK stacks using `scripts/new.py`.
 
 #### [NEW] `.agents/skills/local-invoke/SKILL.md`
-- Provide instructions for generating synthetic event payloads and testing execution via LocalStack.
+- Instructions for local testing and execution against LocalStack.
+
+#### [NEW] `.agents/skills/deploy-aws/SKILL.md`
+- Instructions for pre-flight verification, diffing, and deploying CDK stacks to AWS cloud.
 
 ---
 

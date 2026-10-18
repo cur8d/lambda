@@ -8,72 +8,72 @@ flowchart TD
     Agent --> Registry[".agents/skills/ Index"]
     
     subgraph Skills [".agents/skills/"]
-        H["add-lambda-handler"]
-        S["add-cdk-stack"]
-        I["local-invoke"]
+        Init["init-project"]
+        New["new-lambda"]
+        Local["local-invoke"]
+        Deploy["deploy-aws"]
     end
     
-    Registry --> H & S & I
+    Registry --> Init & New & Local & Deploy
     
-    H -->|"Generates"| Code["templates/<event>/handler.py<br/>tests/test_<event>.py"]
-    S -->|"Generates"| Infra["infra/stacks/<type>_stack.py<br/>infra/app.py"]
-    I -->|"Invokes via"| LocalStack["LocalStack / mise run local:deploy"]
-    
-    Code & Infra --> Verify["mise run verify (ruff + pytest)"]
+    Init -->|"Configures"| Repo["scripts/init.py<br/>pyproject.toml, .env.local"]
+    New -->|"Scaffolds"| Code["scripts/new.py<br/>templates/<name>/, infra/stacks/<name>.py"]
+    Local -->|"Tests locally"| LocalStack["mise run local:deploy (LocalStack)"]
+    Deploy -->|"Deploys to AWS"| Cloud["mise run deploy (AWS CDK)"]
 ```
 
 ## Directory Structure
-
-Skills will be placed in `.agents/skills/` to ensure immediate compatibility with `skills.sh`, Claude Code, Cursor, and other agent platforms:
 
 ```text
 aws-lambda-templates/
 ├── .agents/
 │   └── skills/
-│       ├── add-lambda-handler/
+│       ├── init-project/
 │       │   └── SKILL.md
-│       ├── add-cdk-stack/
+│       ├── new-lambda/
 │       │   └── SKILL.md
-│       └── local-invoke/
-│           ├── SKILL.md
-│           └── templates/
-│               └── sample-event.json
+│       ├── local-invoke/
+│       │   └── SKILL.md
+│       └── deploy-aws/
+│           └── SKILL.md
 ├── infra/
 ├── templates/
+├── scripts/
 └── mise.toml
 ```
 
 ## Skill Definitions
 
-### 1. `add-lambda-handler`
+### 1. `init-project`
 - **Frontmatter**:
   ```yaml
   ---
-  name: add-lambda-handler
-  description: Scaffolds a new AWS Lambda function handler adhering to cur8d standards with Powertools (Logger, Tracer, Metrics), Pydantic payload models, and unit tests. Use whenever asked to create, add, or implement a Lambda handler.
-  category: coding
-  tags: [aws, lambda, python, powertools, cur8d]
+  name: init-project
+  description: Initializes and customizes a new AWS Lambda service repository from the cur8d/lambda template. Use whenever asked to initialize, bootstrap, or fork this template into a new project.
+  category: system
+  tags: [scaffolding, template, init, cur8d]
   ---
   ```
 - **Rules**:
-  - Requires `@logger.inject_lambda_context`, `@tracer.capture_lambda_handler`, `@metrics.log_metrics`.
-  - Requires Pydantic models in `models.py`.
-  - Requires pytest unit test in `tests/` with mocked AWS context.
+  - Prompts for or accepts `--project-name`, `--description`, `--author`.
+  - Executes `uv run python scripts/init.py` or updates `pyproject.toml` and documentation.
+  - Copies `.env.local.example` to `.env.local`.
 
-### 2. `add-cdk-stack`
+### 2. `new-lambda`
 - **Frontmatter**:
   ```yaml
   ---
-  name: add-cdk-stack
-  description: Creates a new AWS CDK infrastructure stack under infra/stacks/ wired to Lambda handlers, permissions, and event triggers. Use whenever asked to add AWS infrastructure, CDK stacks, or triggers for a Lambda.
+  name: new-lambda
+  description: Scaffolds a new event-driven Lambda function with Powertools, Pydantic models, unit tests, and CDK infrastructure stack. Use whenever asked to create, scaffold, or add a new Lambda template or handler.
   category: coding
-  tags: [aws, cdk, infra, lambda, cur8d]
+  tags: [aws, lambda, cdk, python, powertools, cur8d]
   ---
   ```
 - **Rules**:
-  - Inherits from `aws_cdk.Stack`.
-  - Configures memory, timeout, environment variables, log retention.
-  - Registers the stack in `infra/app.py`.
+  - Leverages `uv run python scripts/new.py --name <name>`.
+  - Configures event trigger (API, SQS, S3, EventBridge, DynamoDB).
+  - Enforces Powertools (`Logger`, `Tracer`, `Metrics`).
+  - Verifies with `mise run test`.
 
 ### 3. `local-invoke`
 - **Frontmatter**:
@@ -86,5 +86,21 @@ aws-lambda-templates/
   ---
   ```
 - **Rules**:
-  - Leverages `mise run local:up` and `mise run local:deploy <stack>`.
-  - Formats payloads in accordance with AWS service event specs (APIGW proxy, SQS message, S3 event).
+  - Uses `mise run local:up` and `mise run local:deploy <stack>`.
+  - Synthesizes event payload matching the trigger schema.
+
+### 4. `deploy-aws`
+- **Frontmatter**:
+  ```yaml
+  ---
+  name: deploy-aws
+  description: Synthesizes, diffs, and deploys CDK Lambda stacks to AWS cloud environments using mise and CDK CLI. Use whenever asked to deploy, diff, or inspect cloud deployment for this Lambda service.
+  category: coding
+  tags: [aws, cdk, deploy, cloud, cur8d]
+  ---
+  ```
+- **Rules**:
+  - Validates AWS credentials with `aws sts get-caller-identity`.
+  - Requires pre-flight verification `mise run verify`.
+  - Previews changes with `mise run diff <stack>`.
+  - Executes deployment with `mise run deploy <stack>`.
