@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       aws-cdk:
-        specifier: ^2.1143.0
-        version: 2.1143.0
+        specifier: ^2.1146.1
+        version: 2.1146.1
       aws-cdk-local:
         specifier: ^3.0.4
         version: 3.0.4
@@ -24,8 +24,8 @@ packages:
     resolution: {integrity: sha512-u8c62rfZNGqB9oW+RSW8YAqLLFAcgc5y2aQrgqQTBUVKLTN6r54g/IUbTq/dM1fqvT1GqtylzQjQ8ytACMSGTQ==}
     hasBin: true
 
-  aws-cdk@2.1143.0:
-    resolution: {integrity: sha512-bTbgEmNuN6UMDAyhGFWOAnriafSu7j0cAjaFKRw1/WEs6RE5g062D2v2+YE8Dw6qw7RgNGQPH5Nv47TsK5kZSQ==}
+  aws-cdk@2.1146.1:
+    resolution: {integrity: sha512-Sb3RHuPt8yLP4BPFNl+D2li5wI9h4UL/+NYVq8FCxmDfUJwayzEOc/Tgb4wcixB8naOmPOLzhWkdbFx17tuhSg==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
 
@@ -50,7 +50,7 @@ snapshots:
       diff: 5.2.2
       semver: 7.8.5
 
-  aws-cdk@2.1143.0: {}
+  aws-cdk@2.1146.1: {}
 
   diff@5.2.2: {}
 

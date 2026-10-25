@@ -127,7 +127,7 @@ run = "uv run mkdocs serve"
 
 [tasks."infra:setup"]
 description = "Install CDK dependencies"
-run = "uv sync --group infra"
+run = "uv sync --all-groups"
 hide = true
 
 [tasks."infra:synth"]
