@@ -86,12 +86,12 @@ The project uses [Hypothesis](https://hypothesis.readthedocs.io) for property-ba
 
 ### Project Documentation
 
-Project Documentation is written in Markdown and built using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). API documentation is built from docstrings using [mkdocstrings](https://mkdocstrings.github.io/).
+Project Documentation is written in Markdown and built using [Zensical](https://zensical.org/). API documentation is built from docstrings using [mkdocstrings](https://mkdocstrings.github.io/).
 
 To preview the documentation locally, run:
 
 ```bash
-mise run local
+mise run docs:serve
 ```
 
 ## Reporting Bugs

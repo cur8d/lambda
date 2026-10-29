@@ -19,8 +19,8 @@ mise run precommit     # install pre-commit hooks
 mise run lint          # run ruff (check + format) and pyright
 mise run test          # run pytest with coverage
 mise run infra:synth   # synthesize CDK stack(s) (alias: synth, s)
-mise run docs          # build and deploy docs to GitHub Pages
-mise run docs-local    # serve docs locally
+mise run docs:build    # build documentation site
+mise run docs:serve    # serve docs locally
 mise run local:up      # start LocalStack via Docker Compose
 mise run local:deploy  # deploy CDK stack to LocalStack (alias: local, dl)
 mise run local:destroy # destroy CDK stack from LocalStack (alias: Dl)
@@ -51,7 +51,7 @@ templates/              # main package
     api/               # API Gateway + DynamoDB scenario
     stream/            # DynamoDB Streams scenario
 tests/                 # pytest tests
-docs/                  # MkDocs documentation
+docs/                  # Zensical documentation
 infra/                 # AWS CDK infrastructure stacks
 compose.yml            # LocalStack container configuration
 ```

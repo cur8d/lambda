@@ -72,31 +72,29 @@ def update_deploy_workflow(name: str):
             f.write(content)
 
 
-def update_mkdocs_file(name: str, title_name: str):
-    """Update mkdocs.yml to include new template in both Template and Reference sections."""
-    with open("mkdocs.yml", "r") as f:
+def update_zensical_file(name: str, title_name: str):
+    """Update zensical.toml to include new template in both Template and Reference sections."""
+    with open("zensical.toml", "r") as f:
         content = f.read()
 
     if f"{name}.md" not in content:
         # Add to Templates
-        templates_match = re.search(r"Templates:\n(.*?)(?=\n  - Reference:|$)", content, re.DOTALL)
+        templates_match = re.search(r'("Templates"\s*=\s*\[)(.*?)(\]\s*\},)', content, re.DOTALL)
         if templates_match:
-            templates_content = templates_match.group(1)
-            new_entry = f"    - {title_name}: template/{name}.md"
-            if new_entry not in templates_content:
-                updated_templates = templates_content.rstrip() + "\n" + new_entry
-                content = content.replace(templates_content, updated_templates)
+            templates_content = templates_match.group(2)
+            new_entry = f'    {{ "{title_name}" = "template/{name}.md" }},\n  '
+            updated = templates_content.rstrip() + "\n" + new_entry
+            content = content[: templates_match.start(2)] + updated + content[templates_match.end(2) :]
 
         # Add to Reference
-        reference_match = re.search(r"Reference:\n(.*?)(?=\nplugins:|$)", content, re.DOTALL)
+        reference_match = re.search(r'("Reference"\s*=\s*\[)(.*?)(\]\s*\},)', content, re.DOTALL)
         if reference_match:
-            reference_content = reference_match.group(1)
-            new_entry = f"    - {title_name}: reference/{name}.md"
-            if new_entry not in reference_content:
-                updated_reference = reference_content.rstrip() + "\n" + new_entry + "\n"
-                content = content.replace(reference_content, updated_reference)
+            reference_content = reference_match.group(2)
+            new_entry = f'    {{ "{title_name}" = "reference/{name}.md" }},\n  '
+            updated = reference_content.rstrip() + "\n" + new_entry
+            content = content[: reference_match.start(2)] + updated + content[reference_match.end(2) :]
 
-        with open("mkdocs.yml", "w") as f:
+        with open("zensical.toml", "w") as f:
             f.write(content)
 
 
@@ -135,7 +133,7 @@ def main(name: str):
     # Update Registry Files
     update_infra_app_file(name, camel_name)
     update_deploy_workflow(name)
-    update_mkdocs_file(name, title_name)
+    update_zensical_file(name, title_name)
 
     print(f"Successfully created template '{name}'")
 

@@ -12,7 +12,7 @@ def get_lambda_code() -> Code:
             ".vscode",
             "pyproject.toml",
             "mise.toml",
-            "mkdocs.yml",
+            "zensical.toml",
             "docs",
             "tests",
             "infra",
