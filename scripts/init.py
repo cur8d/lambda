@@ -31,8 +31,8 @@ def main(name: str, description: str, author: str, email: str, github: str):
 
     # 2. File modifications
     replacements = [
-        ("mkdocs.yml", r"^repo_name: .*", f"repo_name: {github}/{name}"),
-        ("mkdocs.yml", r"^repo_url: .*", f"repo_url: https://github.com/{github}/{name}"),
+        ("zensical.toml", r'^repo_name = ".*"', f'repo_name = "{github}/{name}"'),
+        ("zensical.toml", r'^repo_url = ".*"', f'repo_url = "https://github.com/{github}/{name}"'),
         ("pyproject.toml", r'^name = ".*"', f'name = "{name}"'),
         ("pyproject.toml", r'^description = ".*"', f'description = "{description}"'),
         ("pyproject.toml", r"^authors = \[.*\]", f'authors = [{{name = "{author}", email = "{email}"}}]'),

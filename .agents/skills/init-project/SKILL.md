@@ -39,7 +39,7 @@ uv run python scripts/init.py \
 The script will:
 - Rename `templates/` to the sanitized project package name (e.g. `billing_service/`).
 - Update package metadata in `pyproject.toml`.
-- Update repository references in `mkdocs.yml`, `.github/CODEOWNERS`, and documentation.
+- Update repository references in `zensical.toml`, `.github/CODEOWNERS`, and documentation.
 - Remove `scripts/init.py` upon successful customization.
 
 ### 3. Local Environment Configuration

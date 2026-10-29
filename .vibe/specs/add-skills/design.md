@@ -25,7 +25,7 @@ flowchart TD
 ## Directory Structure
 
 ```text
-aws-lambda-templates/
+lambda/
 ├── .agents/
 │   └── skills/
 │       ├── init-project/

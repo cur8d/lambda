@@ -12,16 +12,16 @@ importers:
         specifier: ^2.1146.1
         version: 2.1146.1
       aws-cdk-local:
-        specifier: ^3.0.4
-        version: 3.0.4
+        specifier: ^3.1.0
+        version: 3.1.0
       prettier:
-        specifier: ^3.9.9
-        version: 3.9.9
+        specifier: ^3.9.10
+        version: 3.9.10
 
 packages:
 
-  aws-cdk-local@3.0.4:
-    resolution: {integrity: sha512-u8c62rfZNGqB9oW+RSW8YAqLLFAcgc5y2aQrgqQTBUVKLTN6r54g/IUbTq/dM1fqvT1GqtylzQjQ8ytACMSGTQ==}
+  aws-cdk-local@3.1.0:
+    resolution: {integrity: sha512-vixtOrTXpGsU9VCeITGn43iiP/uv7iEk99OaTwVHAM/vVJy9L+Ari/iXuF7mfykLOmgrTkC2iyMDYZdwaEZWGQ==}
     hasBin: true
 
   aws-cdk@2.1146.1:
@@ -33,8 +33,8 @@ packages:
     resolution: {integrity: sha512-vtcDfH3TOjP8UekytvnHH1o1P4FcUdt4eQ1Y+Abap1tk/OB2MWQvcwS2ClCd1zuIhc3JKOx6p3kod8Vfys3E+A==}
     engines: {node: '>=0.3.1'}
 
-  prettier@3.9.9:
-    resolution: {integrity: sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==}
+  prettier@3.9.10:
+    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -45,7 +45,7 @@ packages:
 
 snapshots:
 
-  aws-cdk-local@3.0.4:
+  aws-cdk-local@3.1.0:
     dependencies:
       diff: 5.2.2
       semver: 7.8.5
@@ -54,6 +54,6 @@ snapshots:
 
   diff@5.2.2: {}
 
-  prettier@3.9.9: {}
+  prettier@3.9.10: {}
 
   semver@7.8.5: {}

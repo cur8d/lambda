@@ -27,7 +27,7 @@ Adds the following task configurations:
 - `tasks."local:destroy"`: Executes `STACK=$usage_stack npx --package=aws-cdk --package=aws-cdk-local cdklocal destroy --force`.
   - Alias: `Dl`
   - Depends on: `install-cdk`, `local:up`
-- `tasks.docs-local`: Serves MkDocs documentation (`uv run mkdocs serve`).
+- `tasks."docs:serve"`: Serves Zensical documentation (`uv run zensical serve`).
 
 ### 3. Documentation (`docs/README.md`, `AGENTS.md`)
 

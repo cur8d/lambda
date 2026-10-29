@@ -39,7 +39,7 @@ Templates come pre-wired with:
 - **Code Quality**: [ruff](https://docs.astral.sh/ruff) for linting and formatting, [pyright](https://microsoft.github.io/pyright) for type checking, and test coverage using [coverage](https://coverage.readthedocs.io)
 - **Code Analysis**: [SonarQube](https://www.sonarsource.com/) / [SonarCloud](https://sonarcloud.io/) integration for code quality and security checks
 - **Dependency Control**: [uv](https://docs.astral.sh/uv/) for dependency management and [Dependabot](https://docs.github.com/en/code-security/dependabot) for automated dependency updates
-- **Documentation**: Automatic documentation using [MkDocs](https://www.mkdocs.org) and [mkdocstrings](https://mkdocstrings.github.io)
+- **Documentation**: Automatic documentation using [Zensical](https://zensical.org) and [mkdocstrings](https://mkdocstrings.github.io)
 - **Development environment**: [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) for dockerized development environment
 - **Pre-commit Validations**: [pre-commit](https://pre-commit.com) hooks
 - **Workflow Automation**: [GitHub Actions](https://github.com/features/actions) for CI/CD and documentation auto-deployment to [GitHub Pages](https://pages.github.com)
@@ -63,9 +63,9 @@ The repository also comes preloaded with these GitHub files:
 
 ## How to use
 
-Click the button below (or [use this link](https://github.com/amrabed/aws-lambda-templates/generate)) to create a new repository for your project, then clone the new repository. Enjoy!
+Click the button below (or [use this link](https://github.com/cur8d/lambda/generate)) to create a new repository for your project, then clone the new repository. Enjoy!
 
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-238636?style=for-the-badge)](https://github.com/amrabed/aws-lambda-templates/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-238636?style=for-the-badge)](https://github.com/cur8d/lambda/generate)
 
 ### Initialize the project
 
@@ -202,20 +202,20 @@ mise run local:down
 
 ### Generating documentation
 
-To build and publish the project documentation to GitHub Pages, run:
+To build the project documentation, run:
 
 ```bash
-mise run docs
+mise run docs:build
 ```
 
-That pushes the new documentation to the `gh-pages` branch. Make sure GitHub Pages is enabled in your repository settings and using the `gh-pages` branch for the documentation to be publicly available.
+The documentation is automatically published to GitHub Pages via GitHub Actions on push to `main`.
 
 ### Local preview
 
 To serve the documentation on a local server, run:
 
 ```bash
-mise run docs-local
+mise run docs:serve
 ```
 
 ### Code Analysis with SonarQube / SonarCloud
@@ -262,7 +262,7 @@ To enable SonarCloud analysis in GitHub Actions:
 ├── compose.yml                     # Docker Compose configuration for LocalStack
 ├── mise.toml                       # mise configuration and tasks
 ├── pyproject.toml                  # Configuration file for different tools
-├── mkdocs.yml                      # MkDocs configuration file
+├── zensical.toml                   # Zensical configuration file
 ├── docs                            # Documentation folder
 │   ├── README.md                   # Read-me file & documentation home page
 │   ├── CONTRIBUTING.md             # Contributing guidelines

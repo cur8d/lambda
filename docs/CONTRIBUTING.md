@@ -21,7 +21,7 @@ All types of contributions are encouraged and valued. Here are some ways you can
 Unless your change is trivial (typo, docs tweak etc.), please create an issue to discuss the change before creating a pull request.
 
 If you're looking for something to get your teeth into, check out issues with the
-[help wanted](https://github.com/amrabed/aws-lambda-templates/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) label on GitHub.
+[help wanted](https://github.com/cur8d/lambda/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) label on GitHub.
 
 To make contributing as easy and fast as possible, you'll want to run tests and linting locally.
 
@@ -86,12 +86,12 @@ The project uses [Hypothesis](https://hypothesis.readthedocs.io) for property-ba
 
 ### Project Documentation
 
-Project Documentation is written in Markdown and built using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). API documentation is built from docstrings using [mkdocstrings](https://mkdocstrings.github.io/).
+Project Documentation is written in Markdown and built using [Zensical](https://zensical.org/). API documentation is built from docstrings using [mkdocstrings](https://mkdocstrings.github.io/).
 
 To preview the documentation locally, run:
 
 ```bash
-mise run local
+mise run docs:serve
 ```
 
 ## Reporting Bugs

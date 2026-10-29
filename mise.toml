@@ -108,20 +108,20 @@ alias = "c"
 
 ##### Docs #####
 
-[tasks.install-docs]
+[tasks."docs:install"]
 description = "Install documentation dependencies"
 run = "uv sync --group docs"
 hide = true
-tools = { node = "latest" }
 
-[tasks.docs]
-description = "Build and deploy documentation to GitHub pages"
-run = "uv run mkdocs gh-deploy --force"
-depends = ["install-docs"]
+[tasks."docs:build"]
+description = "Build documentation site"
+depends = ["docs:install"]
+run = "zensical build --clean"
 
-[tasks.docs-local]
+[tasks."docs:serve"]
 description = "Serve documentation on a local server"
-run = "uv run mkdocs serve"
+depends = ["docs:install"]
+run = "zensical serve"
 
 ##### Infra #####
 
