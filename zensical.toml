@@ -1,8 +1,8 @@
 [project]
 site_name = "AWS Lambda Templates - Python"
-site_url = "https://github.com/amrabed/aws-lambda-templates"
-repo_url = "https://github.com/amrabed/aws-lambda-templates"
-repo_name = "amrabed/aws-lambda-templates"
+site_url = "https://github.com/cur8d/lambda"
+repo_url = "https://github.com/cur8d/lambda"
+repo_name = "cur8d/lambda"
 edit_uri = "edit/main/docs/"
 copyright = "Copyright &copy; 2026"
 

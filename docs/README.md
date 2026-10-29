@@ -63,9 +63,9 @@ The repository also comes preloaded with these GitHub files:
 
 ## How to use
 
-Click the button below (or [use this link](https://github.com/amrabed/aws-lambda-templates/generate)) to create a new repository for your project, then clone the new repository. Enjoy!
+Click the button below (or [use this link](https://github.com/cur8d/lambda/generate)) to create a new repository for your project, then clone the new repository. Enjoy!
 
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-238636?style=for-the-badge)](https://github.com/amrabed/aws-lambda-templates/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-238636?style=for-the-badge)](https://github.com/cur8d/lambda/generate)
 
 ### Initialize the project
 
