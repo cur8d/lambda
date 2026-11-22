@@ -17,7 +17,7 @@ FILE_MAPPINGS = {
 
 def update_infra_app_file(name: str, camel_name: str):
     """Update infra/app.py to include new template in STACK_REGISTRY."""
-    with open("infra/app.py", "r") as f:
+    with open("infra/app.py") as f:
         content = f.read()
 
     import_line = f"from infra.stacks.{name} import {camel_name}Stack"
@@ -48,7 +48,7 @@ def update_infra_app_file(name: str, camel_name: str):
 
 def update_deploy_workflow(name: str):
     """Update .github/workflows/deploy.yml to include new template in options and matrix."""
-    with open(".github/workflows/deploy.yml", "r") as f:
+    with open(".github/workflows/deploy.yml") as f:
         content = f.read()
 
     if f"- {name}" not in content:
@@ -74,7 +74,7 @@ def update_deploy_workflow(name: str):
 
 def update_zensical_file(name: str, title_name: str):
     """Update zensical.toml to include new template in both Template and Reference sections."""
-    with open("zensical.toml", "r") as f:
+    with open("zensical.toml") as f:
         content = f.read()
 
     if f"{name}.md" not in content:
@@ -125,7 +125,7 @@ def main(name: str):
 
     # Generate all other files from templates
     for template_file, target_file in FILE_MAPPINGS.items():
-        with open(template_file, "r") as f:
+        with open(template_file) as f:
             template = Template(f.read())
         with open(target_file.format(name=name), "w") as f:
             f.write(template.substitute(name=name, camel_name=camel_name, title_name=title_name))

@@ -47,7 +47,7 @@ default-groups = ["infra", "dev", "docs"]
 line-length = 120
 
 [tool.ruff.lint]
-select = ["E", "I"]
+select = ["E", "F", "I"]
 
 [tool.coverage.run]
 branch = true
@@ -58,7 +58,7 @@ omit = ["tests/*"]
 fail_under = 90
 
 [tool.pyright]
-exclude = ["**/__pycache__", "**/.pytest_cache", ".venv"]
+exclude = ["**/__pycache__", "**/.pytest_cache", ".venv", "cdk.out"]
 reportMissingImports = "error"
 
 [tool.pytest.ini_options]

@@ -30,7 +30,7 @@ mise run local:down    # stop LocalStack via Docker Compose
 ## Code Style
 
 - Line length: 120 characters (enforced by ruff)
-- Linting rules: `E` (pycodestyle errors) and `I` (isort) via ruff
+- Linting rules: `E` (pycodestyle errors), `F` (Pyflakes), and `I` (isort) via ruff
 - Type checking: pyright in strict mode
 - All code must pass `mise run lint` before committing (enforced by pre-commit hooks)
 
