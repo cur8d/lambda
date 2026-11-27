@@ -1,5 +1,4 @@
 from json import loads
-from uuid import uuid4
 
 from aws_lambda_powertools.utilities.data_classes import S3Event
 from hypothesis import HealthCheck, given, settings

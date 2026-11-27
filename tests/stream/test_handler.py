@@ -1,7 +1,5 @@
 """Unit tests for the stream handler."""
 
-from typing import Any
-
 from pytest import fixture, main
 
 

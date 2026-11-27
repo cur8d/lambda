@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       aws-cdk:
-        specifier: ^2.1146.1
-        version: 2.1146.1
+        specifier: ^2.1149.0
+        version: 2.1149.0
       aws-cdk-local:
         specifier: ^3.1.0
         version: 3.1.0
       prettier:
-        specifier: ^3.9.10
-        version: 3.9.10
+        specifier: ^3.10.1
+        version: 3.10.1
 
 packages:
 
@@ -24,8 +24,8 @@ packages:
     resolution: {integrity: sha512-vixtOrTXpGsU9VCeITGn43iiP/uv7iEk99OaTwVHAM/vVJy9L+Ari/iXuF7mfykLOmgrTkC2iyMDYZdwaEZWGQ==}
     hasBin: true
 
-  aws-cdk@2.1146.1:
-    resolution: {integrity: sha512-Sb3RHuPt8yLP4BPFNl+D2li5wI9h4UL/+NYVq8FCxmDfUJwayzEOc/Tgb4wcixB8naOmPOLzhWkdbFx17tuhSg==}
+  aws-cdk@2.1149.0:
+    resolution: {integrity: sha512-Cj6iGj/lVCf8iSFNZeSjpTbh42yO1uINg9pSYcBJ3wfTwWRk0xQGu2YAi/iON+RWEWGJlJNT+TNewBx05Wd9Sw==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
 
@@ -33,13 +33,13 @@ packages:
     resolution: {integrity: sha512-vtcDfH3TOjP8UekytvnHH1o1P4FcUdt4eQ1Y+Abap1tk/OB2MWQvcwS2ClCd1zuIhc3JKOx6p3kod8Vfys3E+A==}
     engines: {node: '>=0.3.1'}
 
-  prettier@3.9.10:
-    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
+  prettier@3.10.1:
+    resolution: {integrity: sha512-70vp3ZUYoPlFbF9uiTdXHUUCGEIp7d4+6p+8DYbkm2jP7x/3i/paXVF6dopSI3zd/CEitrZN1rc4i85xWmmXlg==}
     engines: {node: '>=14'}
     hasBin: true
 
-  semver@7.8.5:
-    resolution: {integrity: sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==}
+  semver@7.8.6:
+    resolution: {integrity: sha512-9lpSSU4Mly3mrtruwLs1eLK6+gzbzqeBFwRNjIjE+9LuDpWdYctrQlQ3ej1Ilgi7gknpsTRnPoLP8DpCHqHIJw==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -48,12 +48,12 @@ snapshots:
   aws-cdk-local@3.1.0:
     dependencies:
       diff: 5.2.2
-      semver: 7.8.5
+      semver: 7.8.6
 
-  aws-cdk@2.1146.1: {}
+  aws-cdk@2.1149.0: {}
 
   diff@5.2.2: {}
 
-  prettier@3.9.10: {}
+  prettier@3.10.1: {}
 
-  semver@7.8.5: {}
+  semver@7.8.6: {}
